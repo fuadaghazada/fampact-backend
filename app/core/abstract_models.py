@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class TimestampAbstractModel(models.Model):
+class TimestampMixin(models.Model):
     """Custom abstract model with create/update datetime"""
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

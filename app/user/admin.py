@@ -1,13 +1,24 @@
 from django.contrib import admin
-from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils.translation import gettext_lazy as _
 
-from .models import User
+from .models import User, Family
+
+
+class UserAdminInline(admin.StackedInline):
+    model = User
+    extra = 1
 
 
 class UserAdmin(BaseUserAdmin):
-    list_display = ('first_name', 'last_name', 'email', 'verified_at')
+    list_display = (
+        'first_name',
+        'last_name',
+        'email',
+        'verified_at',
+        'family',
+        'role'
+    )
     list_filter = ('is_superuser',)
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
@@ -26,5 +37,12 @@ class UserAdmin(BaseUserAdmin):
     filter_horizontal = ()
 
 
-admin.site.unregister(Group)
+class FamilyAdmin(admin.ModelAdmin):
+    list_display = ('name', 'created_at', 'updated_at')
+    inlines = [
+        UserAdminInline
+    ]
+
+
 admin.site.register(User, UserAdmin)
+admin.site.register(Family, FamilyAdmin)

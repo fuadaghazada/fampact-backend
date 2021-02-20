@@ -50,26 +50,8 @@ class SetPasswordSerializer(serializers.Serializer):
     )
 
 
-class BasicUserSerializer(serializers.ModelSerializer):
-    """Serializer for basic user fields"""
-
-    class Meta:
-        model = User
-        fields = (
-            'id',
-            'first_name',
-            'last_name',
-            'email',
-            'verified_at'
-        )
-        extra_kwargs = {
-            'verified_at': {'read_only': True}
-        }
-
-
 class RegisterUserSerializer(serializers.ModelSerializer):
     """Register user serializer"""
-    name = serializers.CharField()
     password = serializers.CharField(
         style={'input_type': 'password'},
         trim_whitespace=False,
@@ -78,20 +60,42 @@ class RegisterUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('id', 'name', 'email', 'password')
+        fields = (
+            'id',
+            'first_name',
+            'last_name',
+            'email',
+            'password'
+        )
 
     def create(self, validated_data):
         return User.objects.create_user(**validated_data)
 
-    def validate(self, attrs):
-        name = attrs.pop('name')
-        parts = str(name).strip().split(" ")
-        if len(parts) != 2:
-            raise serializers.ValidationError({
-                'name': _('Please enter name and surname')
-            })
 
-        attrs['first_name'] = parts[0]
-        attrs['last_name'] = parts[1]
+class TokenUserSerializer(serializers.ModelSerializer):
+    """Serializer for basic user fields"""
+    family = serializers.SerializerMethodField(read_only=True)
 
-        return attrs
+    class Meta:
+        model = User
+        fields = (
+            'id',
+            'first_name',
+            'last_name',
+            'full_name',
+            'email',
+            'verified_at',
+            'family'
+        )
+        extra_kwargs = {
+            'verified_at': {'read_only': True}
+        }
+
+    def get_family(self, obj):
+        if not obj.family:
+            return
+
+        return {
+            'id': obj.family.id,
+            'name': obj.family.name
+        }

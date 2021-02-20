@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import get_user_model
 
@@ -5,9 +6,10 @@ from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.generics import (
     CreateAPIView,
-    UpdateAPIView
+    UpdateAPIView,
+    RetrieveUpdateAPIView
 )
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 
 from authentication.serializers import (
@@ -15,8 +17,8 @@ from authentication.serializers import (
     ForgotPasswordSerializer,
     VerifyUserSerializer,
     SetPasswordSerializer,
-    RegisterUserSerializer
-)
+    RegisterUserSerializer,
+    TokenUserSerializer)
 from user.serializers import BasicUserSerializer
 from authentication.services import (
     login,
@@ -143,3 +145,15 @@ class RegisterAPIView(CreateAPIView):
         response_data.update({'token': token})
 
         return Response(response_data)
+
+
+class AuthTokenAPIView(RetrieveUpdateAPIView):
+    """Retrieve API View"""
+    permission_classes = (IsAuthenticated,)
+    serializer_class = TokenUserSerializer
+
+    def get_object(self):
+        if self.request:
+            return self.request.user
+
+        raise Http404

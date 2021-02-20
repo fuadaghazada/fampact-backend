@@ -25,14 +25,13 @@ class UserManager(BaseUserManager):
 
     @transaction.atomic()
     def create_superuser(self, first_name, last_name, email, password):
-        user = self.create_user(
+        user = self.model(
             first_name=first_name,
             last_name=last_name,
             email=email,
-            password=password
         )
+        user.set_password(password)
         user.is_superuser = True
-        user.is_verified = True
         user.verified_at = timezone.now()
         user.save(using=self._db)
 

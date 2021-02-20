@@ -5,7 +5,8 @@ from .views import (
     ForgotAPIView,
     SetPasswordAPIView,
     LogoutAPIView,
-    RegisterAPIView
+    RegisterAPIView,
+    AuthTokenAPIView
 )
 
 app_name = 'authentication'
@@ -20,5 +21,6 @@ urlpatterns = [
         name="set_password"
     ),
     path('logout/', LogoutAPIView.as_view(), name="logout"),
-    path('register/', RegisterAPIView.as_view(), name="register")
+    path('register/', RegisterAPIView.as_view(), name="register"),
+    path('me/', AuthTokenAPIView.as_view(), name="me")
 ]
