@@ -1,2 +1,3 @@
 # fampact-backend
-Fampact - Family Planner application start-up project
+Fampact - Family Planner backend application start-up project
+
