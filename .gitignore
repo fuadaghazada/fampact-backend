@@ -256,4 +256,8 @@ fabric.properties
 .venv/
 docker/db/postgres
 
+.env*
+.env-dev
+
+
 # End of https://www.gitignore.io/api/pycharm,python,django

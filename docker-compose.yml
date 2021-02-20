@@ -1,0 +1,68 @@
+version: "3"
+
+volumes:
+  db_data:
+
+networks:
+  api_redis:
+
+services:
+  # Web API
+  api: &api
+    build:
+      context: .
+      dockerfile: docker/dev/python/Dockerfile
+    container_name: fampact-api
+    restart: on-failure
+    volumes:
+      - ./app:/app
+    ports:
+      - 8000:8000
+    command: >
+        sh -c """
+                  python manage.py wait_for_db
+                  python manage.py migrate
+                  python manage.py compilemessages
+                  python manage.py runserver 0.0.0.0:8000
+              """
+    env_file:
+      - ./.env-dev
+    depends_on:
+      - db
+      - redis
+      - celery_worker
+    networks:
+      - api_redis
+      - default
+
+  # Database
+  db:
+    image: postgres:13.0-alpine
+    container_name: fampact-db
+    restart: unless-stopped
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    env_file:
+      - ./.env-dev
+    expose:
+      - 5432
+
+  # Redis
+  redis:
+    image: redis
+    container_name: fampact-redis
+    expose:
+      - 6379
+    networks:
+      - api_redis
+
+  # Worker
+  celery_worker:
+    <<: *api
+    container_name: fampact-worker
+    command: >
+      sh -c "celery -A app worker --loglevel=INFO"
+    ports: []
+    depends_on:
+      - redis
+      - db
