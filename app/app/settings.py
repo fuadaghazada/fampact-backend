@@ -64,7 +64,8 @@ MY_APPS = [
     'user',
     'authentication',
     'notification',
-    # 'task',
+    'task',
+    'scoring'
 ]
 
 INSTALLED_APPS = [

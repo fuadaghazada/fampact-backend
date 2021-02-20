@@ -39,6 +39,20 @@ urlpatterns = [
         include('authentication.urls'),
         name='authentication'
     ),
+
+    # Task
+    path(
+        f'{API_PREFIX}/task/',
+        include('task.urls'),
+        name='task'
+    ),
+
+    # Scoring
+    path(
+        f'{API_PREFIX}/scoring/',
+        include('scoring.urls'),
+        name='scoring'
+    )
 ]
 
 # Media links
