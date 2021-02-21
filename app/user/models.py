@@ -1,3 +1,5 @@
+from datetime import date
+
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.utils.translation import gettext_lazy as _
@@ -86,6 +88,14 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampMixin):
     @property
     def role_text(self):
         return self.get_role_display()
+
+    @property
+    def age(self):
+        if self.d_o_b:
+            today = date.today()
+            born = self.d_o_b
+
+            return today.year - born.year
 
 
 class Family(TimestampMixin):

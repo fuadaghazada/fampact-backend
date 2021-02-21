@@ -15,7 +15,7 @@ class PublicLeaderBoardSerializer(serializers.ModelSerializer):
             'name',
             'photo',
             'region',
-            'score'
+            'score',
         )
 
 
@@ -28,4 +28,5 @@ class FamilyMemberLeaderBoardSerializer(BasicUserSerializer):
         fields = BasicUserSerializer.Meta.fields
         fields += (
             'score',
+            'age'
         )

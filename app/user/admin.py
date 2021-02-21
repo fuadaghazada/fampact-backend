@@ -20,12 +20,13 @@ class UserAdmin(BaseUserAdmin):
         'verified_at',
         'family',
         'role',
-        'score'
+        'score',
+        'd_o_b'
     )
     list_filter = ('is_superuser', 'role')
     fieldsets = (
         (None, {'fields': ('email', 'username', 'password')}),
-        (_('Personal info'), {'fields': ('first_name', 'last_name')}),
+        (_('Personal info'), {'fields': ('first_name', 'last_name', 'd_o_b')}),
         (_('Permissions'), {'fields': ('is_superuser', 'verified_at')}),
     )
     add_fieldsets = (
