@@ -43,12 +43,13 @@ class UserManager(BaseUserManager):
 
         return user
 
-    def add_member(self, first_name, email, adder):
+    def add_member(self, first_name, email, role, adder):
         user = self.model(
             first_name=first_name,
             last_name=adder.family.name,
             email=email,
-            family=adder.family
+            family=adder.family,
+            role=role
         )
         user.save(using=self._db)
 

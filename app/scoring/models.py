@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from core.abstract_models import TimestampMixin
+from scoring.manager import ScoreManager
 
 
 class Score(TimestampMixin):
@@ -21,6 +22,8 @@ class Score(TimestampMixin):
         null=True,
         blank=True,
     )
+
+    objects = ScoreManager()
 
     class Meta:
         verbose_name = _('Score')

@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils.translation import gettext_lazy as _
 
+from scoring.models import Score
 from .models import User, Family
 
 
@@ -18,7 +19,8 @@ class UserAdmin(BaseUserAdmin):
         'username',
         'verified_at',
         'family',
-        'role'
+        'role',
+        'score'
     )
     list_filter = ('is_superuser', 'role')
     fieldsets = (
@@ -34,15 +36,24 @@ class UserAdmin(BaseUserAdmin):
     )
 
     search_fields = ('first_name', 'last_name', 'email')
-    ordering = ('first_name', 'last_name', 'email')
+    ordering = ('first_name', 'last_name', 'email',)
     filter_horizontal = ()
+
+    def score(self, instance):
+        return Score.objects.calculate_user_score(instance)
 
 
 class FamilyAdmin(admin.ModelAdmin):
-    list_display = ('name', 'created_at', 'updated_at')
+    list_display = ('name', 'created_at', 'updated_at', 'score')
     inlines = [
         UserAdminInline
     ]
+
+    def get_queryset(self, request):
+        return Score.objects.public_leader_board_qs()
+
+    def score(self, instance):
+        return instance.score
 
 
 admin.site.register(User, UserAdmin)

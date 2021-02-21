@@ -94,6 +94,18 @@ class Family(TimestampMixin):
         _('Family name'),
         max_length=255
     )
+    photo = models.ImageField(
+        _('Family photo'),
+        upload_to='family_photos',
+        null=True,
+        blank=True
+    )
+    region = models.CharField(
+        _('Region'),
+        max_length=255,
+        null=True,
+        blank=True
+    )
 
     class Meta:
         verbose_name = _('Family')

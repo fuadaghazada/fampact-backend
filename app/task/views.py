@@ -15,6 +15,7 @@ from .serializers import (
 class TaskViewSet(viewsets.ModelViewSet):
     """Task model view set"""
     queryset = Task.objects.all().order_by('-created_at')
+    filter_fields = ('status', 'created_by', 'assigned_to')
 
     @action(detail=True, methods=['PUT'])
     def update_status(self, request, pk):
@@ -34,8 +35,8 @@ class TaskViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         if self.request:
             return Task.objects.filter(
-                Q(created_by=self.request.user) |
-                Q(assigned_to=self.request.user)
+                Q(created_by__family=self.request.user.family) |
+                Q(assigned_to__family=self.request.user.family)
             ).order_by('-created_at')
 
         return self.queryset.none()

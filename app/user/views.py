@@ -1,6 +1,6 @@
 from django.http import Http404
 from rest_framework.generics import (
-    RetrieveAPIView,
+    RetrieveUpdateAPIView,
     CreateAPIView
 )
 
@@ -11,7 +11,7 @@ from .serializers import (
 )
 
 
-class RetrieveFamilyApiView(RetrieveAPIView):
+class RetrieveFamilyApiView(RetrieveUpdateAPIView):
     """Retrieve family API View"""
     serializer_class = FamilySerializer
 
