@@ -1,0 +1,223 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-02-21 07:12+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: app/settings.py:173
+msgid "English"
+msgstr ""
+
+#: app/settings.py:174
+msgid "Azerbaijani"
+msgstr ""
+
+#: authentication/serializers.py:33
+msgid "No user found with this email"
+msgstr ""
+
+#: authentication/services.py:22
+msgid "Email or password is wrong"
+msgstr ""
+
+#: authentication/services.py:24
+msgid "Please verify the user"
+msgstr ""
+
+#: authentication/services.py:40
+msgid "Verification code"
+msgstr ""
+
+#: authentication/services.py:52
+msgid "Verification code has been expired"
+msgstr ""
+
+#: authentication/services.py:55
+msgid "The verification code you entered is incorrect"
+msgstr ""
+
+#: authentication/services.py:77
+msgid "Token is required"
+msgstr ""
+
+#: authentication/services.py:82
+msgid "Invalid token"
+msgstr ""
+
+#: authentication/views.py:132
+msgid "Logout successful"
+msgstr ""
+
+#: core/admin.py:5
+msgid "FamPact Administration"
+msgstr ""
+
+#: scoring/models.py:15
+msgid "Score of user"
+msgstr ""
+
+#: scoring/models.py:21
+msgid "Score for task"
+msgstr ""
+
+#: scoring/models.py:29
+msgid "Score"
+msgstr ""
+
+#: scoring/models.py:30
+msgid "Scores"
+msgstr ""
+
+#: task/models.py:14
+msgid "Title"
+msgstr ""
+
+#: task/models.py:18
+msgid "Description"
+msgstr ""
+
+#: task/models.py:23 task/models.py:77
+msgid "Status"
+msgstr ""
+
+#: task/models.py:29
+msgid "Deadline"
+msgstr ""
+
+#: task/models.py:34
+msgid "Started at"
+msgstr ""
+
+#: task/models.py:39
+msgid "Finished at"
+msgstr ""
+
+#: task/models.py:47
+msgid "Task creator"
+msgstr ""
+
+#: task/models.py:53
+msgid "Task assignee"
+msgstr ""
+
+#: task/models.py:59
+msgid "Task"
+msgstr ""
+
+#: task/models.py:60
+msgid "Tasks"
+msgstr ""
+
+#: task/models.py:89
+msgid "Task log updater"
+msgstr ""
+
+#: task/models.py:95
+msgid "Task log"
+msgstr ""
+
+#: task/models.py:96
+msgid "Task logs"
+msgstr ""
+
+#: task/options/constants.py:8
+msgid "Pending"
+msgstr ""
+
+#: task/options/constants.py:9
+msgid "DOING"
+msgstr ""
+
+#: task/options/constants.py:10
+msgid "DONE"
+msgstr ""
+
+#: user/admin.py:28
+msgid "Personal info"
+msgstr ""
+
+#: user/admin.py:29
+msgid "Permissions"
+msgstr ""
+
+#: user/models.py:16
+msgid "First name"
+msgstr ""
+
+#: user/models.py:20
+msgid "Last name"
+msgstr ""
+
+#: user/models.py:24
+msgid "Email"
+msgstr ""
+
+#: user/models.py:31
+msgid "Username"
+msgstr ""
+
+#: user/models.py:40
+msgid "User role"
+msgstr ""
+
+#: user/models.py:49 user/models.py:111
+msgid "Family"
+msgstr ""
+
+#: user/models.py:54
+msgid "Date of birth"
+msgstr ""
+
+#: user/models.py:59
+msgid "Profile image"
+msgstr ""
+
+#: user/models.py:72
+msgid "User"
+msgstr ""
+
+#: user/models.py:73
+msgid "Users"
+msgstr ""
+
+#: user/models.py:94
+msgid "Family name"
+msgstr ""
+
+#: user/models.py:98
+msgid "Family photo"
+msgstr ""
+
+#: user/models.py:104
+msgid "Region"
+msgstr ""
+
+#: user/models.py:112
+msgid "Families"
+msgstr ""
+
+#: user/options/constants.py:9
+msgid "Member"
+msgstr ""
+
+#: user/options/constants.py:10
+msgid "Parent"
+msgstr ""
+
+#: user/options/constants.py:11
+msgid "Child"
+msgstr ""
