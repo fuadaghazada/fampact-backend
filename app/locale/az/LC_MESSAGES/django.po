@@ -20,204 +20,204 @@ msgstr ""
 
 #: app/settings.py:173
 msgid "English"
-msgstr ""
+msgstr "İngiliscə"
 
 #: app/settings.py:174
 msgid "Azerbaijani"
-msgstr ""
+msgstr "Azərbaycanca"
 
 #: authentication/serializers.py:33
 msgid "No user found with this email"
-msgstr ""
+msgstr "Bu e-poçt ilə istifadəçi tapılmadı"
 
 #: authentication/services.py:22
 msgid "Email or password is wrong"
-msgstr ""
+msgstr "E-poçt və ya şifrə yanlışdır"
 
 #: authentication/services.py:24
 msgid "Please verify the user"
-msgstr ""
+msgstr "Zəhmət olmasa istifadəçini təsdiqləyin"
 
 #: authentication/services.py:40
 msgid "Verification code"
-msgstr ""
+msgstr "Təsdiqləmə kodu"
 
 #: authentication/services.py:52
 msgid "Verification code has been expired"
-msgstr ""
+msgstr "Təsdiqləmə kodunun istifadə müddəti keçib"
 
 #: authentication/services.py:55
 msgid "The verification code you entered is incorrect"
-msgstr ""
+msgstr "Təsdiqləmə kodu yanlışdır"
 
 #: authentication/services.py:77
 msgid "Token is required"
-msgstr ""
+msgstr "Məlumat tələb olunur"
 
 #: authentication/services.py:82
 msgid "Invalid token"
-msgstr ""
+msgstr "Xətalı məlumat"
 
 #: authentication/views.py:132
 msgid "Logout successful"
-msgstr ""
+msgstr "Çıxış uğurla yerinə yetirildi"
 
 #: core/admin.py:5
 msgid "FamPact Administration"
-msgstr ""
+msgstr "FamPact Admin panel"
 
 #: scoring/models.py:15
 msgid "Score of user"
-msgstr ""
+msgstr "İstifadəçi xalı"
 
 #: scoring/models.py:21
 msgid "Score for task"
-msgstr ""
+msgstr "Tapşırıq xalı"
 
 #: scoring/models.py:29
 msgid "Score"
-msgstr ""
+msgstr "Xal"
 
 #: scoring/models.py:30
 msgid "Scores"
-msgstr ""
+msgstr "Xallar"
 
 #: task/models.py:14
 msgid "Title"
-msgstr ""
+msgstr "Başlıq"
 
 #: task/models.py:18
 msgid "Description"
-msgstr ""
+msgstr "Məlumat"
 
 #: task/models.py:23 task/models.py:77
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 #: task/models.py:29
 msgid "Deadline"
-msgstr ""
+msgstr "Bitmə tarixi"
 
 #: task/models.py:34
 msgid "Started at"
-msgstr ""
+msgstr "Başlama tarixi"
 
 #: task/models.py:39
 msgid "Finished at"
-msgstr ""
+msgstr "Bitmə tarixi"
 
 #: task/models.py:47
 msgid "Task creator"
-msgstr ""
+msgstr "Tapşırığı daxil edən"
 
 #: task/models.py:53
 msgid "Task assignee"
-msgstr ""
+msgstr "Tapşırılan şəxs"
 
 #: task/models.py:59
 msgid "Task"
-msgstr ""
+msgstr "Tapşırıq"
 
 #: task/models.py:60
 msgid "Tasks"
-msgstr ""
+msgstr "Tapşırıqlar"
 
 #: task/models.py:89
 msgid "Task log updater"
-msgstr ""
+msgstr "Tapşırıq qeyd edən"
 
 #: task/models.py:95
 msgid "Task log"
-msgstr ""
+msgstr "Tapşırıq loqu"
 
 #: task/models.py:96
 msgid "Task logs"
-msgstr ""
+msgstr "Tapşırıq loqları"
 
 #: task/options/constants.py:8
 msgid "Pending"
-msgstr ""
+msgstr "Gözləyir"
 
 #: task/options/constants.py:9
 msgid "DOING"
-msgstr ""
+msgstr "Yerine yetirilir"
 
 #: task/options/constants.py:10
 msgid "DONE"
-msgstr ""
+msgstr "Tamamlanıb"
 
 #: user/admin.py:28
 msgid "Personal info"
-msgstr ""
+msgstr "Şəxsi məlumat"
 
 #: user/admin.py:29
 msgid "Permissions"
-msgstr ""
+msgstr "İcazələr"
 
 #: user/models.py:16
 msgid "First name"
-msgstr ""
+msgstr "Ad"
 
 #: user/models.py:20
 msgid "Last name"
-msgstr ""
+msgstr "Soyad"
 
 #: user/models.py:24
 msgid "Email"
-msgstr ""
+msgstr "E-poçt"
 
 #: user/models.py:31
 msgid "Username"
-msgstr ""
+msgstr "İstifadəçi adı"
 
 #: user/models.py:40
 msgid "User role"
-msgstr ""
+msgstr "İstifadəçi rolu"
 
 #: user/models.py:49 user/models.py:111
 msgid "Family"
-msgstr ""
+msgstr "Ailə"
 
 #: user/models.py:54
 msgid "Date of birth"
-msgstr ""
+msgstr "Doğum tarixi"
 
 #: user/models.py:59
 msgid "Profile image"
-msgstr ""
+msgstr "Profil şəkli"
 
 #: user/models.py:72
 msgid "User"
-msgstr ""
+msgstr "İstifadəçi"
 
 #: user/models.py:73
 msgid "Users"
-msgstr ""
+msgstr "İstifadəçilər"
 
 #: user/models.py:94
 msgid "Family name"
-msgstr ""
+msgstr "Ailə adı"
 
 #: user/models.py:98
 msgid "Family photo"
-msgstr ""
+msgstr "Ailə şəkli"
 
 #: user/models.py:104
 msgid "Region"
-msgstr ""
+msgstr "Bölgə"
 
 #: user/models.py:112
 msgid "Families"
-msgstr ""
+msgstr "Ailələr"
 
 #: user/options/constants.py:9
 msgid "Member"
-msgstr ""
+msgstr "Üzv"
 
 #: user/options/constants.py:10
 msgid "Parent"
-msgstr ""
+msgstr "Valideyn"
 
 #: user/options/constants.py:11
 msgid "Child"
-msgstr ""
+msgstr "Uşaq"
