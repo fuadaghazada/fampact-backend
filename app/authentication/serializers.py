@@ -89,7 +89,9 @@ class TokenUserSerializer(serializers.ModelSerializer):
             'verified_at',
             'family',
             'role',
-            'role_text'
+            'role_text',
+            'photo',
+            'd_o_b'
         )
         extra_kwargs = {
             'verified_at': {'read_only': True}

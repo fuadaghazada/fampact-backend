@@ -18,7 +18,9 @@ class BasicUserSerializer(serializers.ModelSerializer):
             'username',
             'verified_at',
             'role',
-            'role_text'
+            'role_text',
+            'photo',
+            'd_o_b'
         )
         extra_kwargs = {
             'verified_at': {'read_only': True}
