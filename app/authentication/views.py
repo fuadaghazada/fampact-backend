@@ -87,6 +87,8 @@ class VerifyAPIView(UpdateAPIView):
             response_data = BasicUserSerializer(user).data
             if token:
                 response_data['reset_password_token'] = token
+                response_data['has_password'] = str(user.password) != ""
+
             return Response(response_data)
 
         except Exception as e:
