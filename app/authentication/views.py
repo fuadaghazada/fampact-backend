@@ -9,7 +9,7 @@ from rest_framework.generics import (
     UpdateAPIView,
     RetrieveUpdateAPIView
 )
-from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
 from authentication.serializers import (
@@ -149,7 +149,6 @@ class RegisterAPIView(CreateAPIView):
 
 class AuthTokenAPIView(RetrieveUpdateAPIView):
     """Retrieve API View"""
-    permission_classes = (IsAuthenticated,)
     serializer_class = TokenUserSerializer
 
     def get_object(self):

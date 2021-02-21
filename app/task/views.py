@@ -1,3 +1,4 @@
+from django.db.models import Q
 from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -18,10 +19,10 @@ class TaskViewSet(viewsets.ModelViewSet):
     @action(detail=True, methods=['PUT'])
     def update_status(self, request, pk):
         context = self.get_serializer_context()
-        context.update({'user': request.user})
         serializer = self.get_serializer_class()(
-            data=request,
-            context=context
+            self.get_object(),
+            data=request.data,
+            context=context,
         )
         serializer.is_valid(raise_exception=True)
         serializer.save()
@@ -31,7 +32,13 @@ class TaskViewSet(viewsets.ModelViewSet):
         )
 
     def get_queryset(self):
-        return Task.objects.all()
+        if self.request:
+            return Task.objects.filter(
+                Q(created_by=self.request.user) |
+                Q(assigned_to=self.request.user)
+            ).order_by('-created_at')
+
+        return self.queryset.none()
 
     def get_serializer_class(self):
         """
@@ -52,3 +59,13 @@ class TaskViewSet(viewsets.ModelViewSet):
             return TaskStatusUpdateSerializer
 
         return TaskInfoSerializer
+
+    def get_serializer_context(self):
+        context = super(TaskViewSet, self).get_serializer_context()
+
+        if self.request:
+            context.update({
+                'user': self.request.user
+            })
+
+        return context

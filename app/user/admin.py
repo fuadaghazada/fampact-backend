@@ -15,13 +15,14 @@ class UserAdmin(BaseUserAdmin):
         'first_name',
         'last_name',
         'email',
+        'username',
         'verified_at',
         'family',
         'role'
     )
-    list_filter = ('is_superuser',)
+    list_filter = ('is_superuser', 'role')
     fieldsets = (
-        (None, {'fields': ('email', 'password')}),
+        (None, {'fields': ('email', 'username', 'password')}),
         (_('Personal info'), {'fields': ('first_name', 'last_name')}),
         (_('Permissions'), {'fields': ('is_superuser', 'verified_at')}),
     )

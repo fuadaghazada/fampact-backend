@@ -26,7 +26,7 @@ def handle_score(sender, **kwargs):
         Score.objects.filter(task=task).delete()
 
     if task.status == TASK_STATUS_DONE:
-        Score.objects.get_create(
+        Score.objects.create(
             score=1,
             user=user,
             task=task

@@ -47,6 +47,12 @@ class TaskCreateUpdateSerializer(serializers.ModelSerializer):
             'assigned_to'
         )
 
+    def validate(self, attrs):
+        user = self.context.get('user')
+        attrs['created_by'] = user
+
+        return attrs
+
 
 class TaskStatusUpdateSerializer(serializers.ModelSerializer):
     """Task status update serializer"""
@@ -54,8 +60,11 @@ class TaskStatusUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Task
         fields = (
-            'status'
+            'status',
         )
+        extra_kwargs = {
+            'status': {'required': True}
+        }
 
     def update(self, instance, validated_data):
         """Adding request user to """

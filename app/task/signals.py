@@ -22,5 +22,5 @@ def task_status_updated(sender, **kwargs):
     TaskStatusLog.objects.create(
         task=task,
         status=task.status,
-        user=user
+        updated_by=user
     )

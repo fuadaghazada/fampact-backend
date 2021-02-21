@@ -21,3 +21,12 @@ def create_family(sender, **kwargs):
         )
         user.family = family
         user.save()
+
+
+@receiver(post_save, sender=User)
+def user_saved(sender, **kwargs):
+    user = kwargs.get('instance')
+
+    if not user.username:
+        user.username = user.email
+        user.save()

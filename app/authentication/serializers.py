@@ -10,7 +10,7 @@ User = get_user_model()
 
 class LoginUserSerializer(serializers.Serializer):
     """Serializer for user authentication"""
-    email = serializers.EmailField()
+    username = serializers.CharField()
     password = serializers.CharField(
         style={'input_type': 'password'},
         trim_whitespace=False
@@ -52,6 +52,7 @@ class SetPasswordSerializer(serializers.Serializer):
 
 class RegisterUserSerializer(serializers.ModelSerializer):
     """Register user serializer"""
+    email = serializers.EmailField(required=True)
     password = serializers.CharField(
         style={'input_type': 'password'},
         trim_whitespace=False,
@@ -84,8 +85,11 @@ class TokenUserSerializer(serializers.ModelSerializer):
             'last_name',
             'full_name',
             'email',
+            'username',
             'verified_at',
-            'family'
+            'family',
+            'role',
+            'role_text'
         )
         extra_kwargs = {
             'verified_at': {'read_only': True}

@@ -40,6 +40,13 @@ urlpatterns = [
         name='authentication'
     ),
 
+    # User
+    path(
+        f'{API_PREFIX}/user/',
+        include('user.urls'),
+        name='user'
+    ),
+
     # Task
     path(
         f'{API_PREFIX}/task/',

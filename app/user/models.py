@@ -25,7 +25,12 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampMixin):
         max_length=255,
         unique=True,
         null=True,
-        blank=True
+        blank=True,
+    )
+    username = models.CharField(
+        _('Username'),
+        max_length=255,
+        unique=True
     )
     verified_at = models.DateTimeField(
         null=True,
@@ -57,7 +62,7 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampMixin):
         blank=True
     )
 
-    USERNAME_FIELD = 'email'
+    USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ('first_name', 'last_name')
 
     objects = UserManager()
@@ -68,7 +73,7 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampMixin):
         verbose_name_plural = _('Users')
 
     def __str__(self):
-        return self.email
+        return self.username
 
     @property
     def is_staff(self):
@@ -77,6 +82,10 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampMixin):
     @property
     def full_name(self):
         return f"{self.first_name} {self.last_name}"
+
+    @property
+    def role_text(self):
+        return self.get_role_display()
 
 
 class Family(TimestampMixin):

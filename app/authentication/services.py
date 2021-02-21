@@ -10,11 +10,11 @@ VERIFICATION_KEY = 'VERIFICATION_KEY'
 RESET_PASSWORD_TOKEN_KEY = 'RESET_PASSWORD_TOKEN_KEY'
 
 
-def login(request, email, password):
+def login(request, username, password):
     """Login service (non-merchant & merchant users): returns the token"""
     user = authenticate(
         request=request,
-        username=email,
+        username=username,
         password=password
     )
 
@@ -57,20 +57,18 @@ def verify_user(user, verification_code):
     cache.remove_key(pre_key=VERIFICATION_KEY, key=user.pk)
 
     # Generating a token for 'set_password'
-    if user.verified_at:
-        set_password_token = str(helpers.random_code(20)).lower()
-        cache.set_key(
-            pre_key=RESET_PASSWORD_TOKEN_KEY,
-            key=set_password_token,
-            value=user.id
-        )
-
-        return user, set_password_token
-    else:
+    if not user.verified_at:
         user.verified_at = timezone.now()
         user.save()
 
-        return user, None
+    set_password_token = str(helpers.random_code(20)).lower()
+    cache.set_key(
+        pre_key=RESET_PASSWORD_TOKEN_KEY,
+        key=set_password_token,
+        value=user.id
+    )
+
+    return user, set_password_token
 
 
 def set_password(user, password, token):
